@@ -5,16 +5,20 @@ const initialState = {
 }
 
 export const userSlice = createSlice({
-    name : 'userData',
+    name : 'data',
     initialState,
     reducers : {
         signUp : (state,action)=>{
-            console.log('action.payload',action.payload)
+            // console.log('action.payload',action.payload)
             state.data = [...state.data,action.payload];
-            console.log('data has been entered',state.data);
+            // console.log('data has been entered',state.data);
+        },
+
+        login : (state,action)=>{
+               state.data = [...state.data ,action.payload]; 
         }
     }
 })
-export const {signUp} =  userSlice.actions
+export const {signUp , login} =  userSlice.actions
 
 export default userSlice.reducer

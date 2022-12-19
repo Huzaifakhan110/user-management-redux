@@ -5,7 +5,7 @@ import {signUp} from '../state/reduxReducers/userReducers';
 // import {useNavigate} from 'react-router-dom'
 
 function SignUp() {
-//   const navigate = useNavigate()
+  // const navigate = useNavigate()
 const dispatch = useDispatch();
     const [userName,setUserName] = useState('');
     const [email,setEmail] = useState('');
@@ -19,7 +19,7 @@ const dispatch = useDispatch();
       }
       console.log('obj=>',obj)
         dispatch(signUp(obj));
-    
+    // navigate('/');
      
     }
 
