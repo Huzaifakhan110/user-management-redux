@@ -2,9 +2,10 @@ import { useState } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {login} from '../state/reduxReducers/userReducers';
-
+import { useNavigate } from 'react-router-dom';
 function SignIn() {
   const dispatch = useDispatch();
+  const naviagte = useNavigate();
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setloginPassword] = useState("");
   const val = useSelector((state) => state.signUpvalue.data);
@@ -16,7 +17,7 @@ console.log(val)
 // console.log('data from login =>' ,userObj);
 let resp = val.find((e) => {
   // console.log(e)
-  console.log(e.email+" "+loginEmail)
+  //console.log(e.email+" "+loginEmail)
   return e.email === loginEmail
   
 })
@@ -29,14 +30,19 @@ if(resp === undefined){
     return e.password === loginPassword
   })
   if(resp1 !== undefined){
-    dispatch(login(resp))
+    dispatch(login(resp));
+    naviagte('/Welcome');
     // console.log(dispatch(login(resp)))
-    console.log("User Matched")
+    console.log("User Matched");
+   
   }else{
-    console.log('Password does not matched')
+    //console.log('Password does not matched')
   }
 }
 
+  }
+  const signUpPage = () =>{
+  naviagte('/SignUp');
   }
   // function onClick() {
   
@@ -113,12 +119,14 @@ if(resp === undefined){
                         >
                           Sign In
                         </button>
-                        {/* <button
+                        
+                        <button
                           type="button"
                           className="btn btn-primary btn-block mb-4 mx-3"
+                          onClick={()=>signUpPage()}
                         >
                           Sign Up
-                        </button> */}
+                        </button>
                       </center>
                     </form>
                   </div>

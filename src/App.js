@@ -1,12 +1,20 @@
 
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
+import Welcome from './components/Welcome';
 function App() {
   return (
    <>
-  <SignIn/>
-  <SignUp/>
+<BrowserRouter>
+       <Routes>
+      <Route path="/" element={<SignIn/>} />
+      {/* <Route path="/SignUp" element={<SignUp callback={(data) => ListenerSignUp(data)}/>} /> */}
+      <Route path="/SignUp" element={<SignUp/>} />
+     <Route path='/Welcome' element={<Welcome/>}/>
+      </Routes>
+     </BrowserRouter>
    </>
   );
 }
